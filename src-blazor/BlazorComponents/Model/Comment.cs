@@ -1,4 +1,4 @@
-﻿namespace BlazorComponents.Model;
+namespace BlazorComponents.Model;
 
 /// <summary>
 /// Comment model copied from Angular project, see comment.model.ts
@@ -8,4 +8,6 @@ public record Comment(
     string body,
     string createdAt,
     Profile author
-);
+) {
+    public static Comment Empty() => new(-1, "", DateTime.UtcNow.ToString("O"), Profile.Empty());
+}

@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-block">
+        <p class="card-text">
+            @Comment.body
+        </p>
+    </div>
+    <div class="card-footer">
+        <NavLink class="comment-author" href=@($"profile/{Comment.author.username}")>
+            <img src="@Comment.author.image" class="comment-author-img" />
+        </NavLink>
+        &nbsp;
+        <NavLink class="comment-author" href=@($"profile/{Comment.author.username}")>
+            @Comment.author.username
+        </NavLink>
+        <span class="date-posted">
+            @DateTime.Parse(Comment.createdAt).ToString("D")
+        </span>
+        <span class="mod-options" hidden="@(!canModify)">
+            <i class="ion-trash-a" @onclick="DeleteClicked"></i>
+        </span>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Comment Comment { get; set; } = Comment.Empty();
+    private bool canModify = true;
+
+    protected override void OnParametersSet() {
+        canModify = Comment.author.username == "User0";
+    }
+
+    private void DeleteClicked() {
+        Console.WriteLine("Delete clicked");
+    }
+}

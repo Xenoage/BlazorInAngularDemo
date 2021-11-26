@@ -1,0 +1,4 @@
+/* Draw violet border around component to prove we are using Blazor ;-) */
+.card {
+    border: 2px dashed #5c2d91;
+}

@@ -1,4 +1,4 @@
-﻿namespace BlazorComponents.Model;
+namespace BlazorComponents.Model;
 
 /// <summary>
 /// Profile model copied from Angular project, see profile.model.ts
@@ -8,4 +8,6 @@ public record Profile(
     string bio,
     string image,
     bool following
-);
+) {
+    public static Profile Empty() => new("", "", "", false);
+}
