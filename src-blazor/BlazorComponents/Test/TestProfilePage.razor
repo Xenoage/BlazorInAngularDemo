@@ -1,0 +1,8 @@
+@page "/profile/{Username}"
+<h2>Profile page placeholder</h2>
+<p>for user @Username</p>
+<NavLink href="/">Back</NavLink>
+@code {
+    [Parameter]
+    public string Username { get; set; } = "";
+}
