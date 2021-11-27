@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -17,5 +17,14 @@
 
   <Import Project="..\AngularAdapterBuild\build\net6.0\AngularAdapterBuild.targets" />
 
+  <Target Name="CopyBlazorBinariesToAngularProject" AfterTargets="Publish">
+    <RemoveDir Directories="..\..\bin-blazor\_framework" />
+    <Delete Files="..\..\bin-blazor\$(ProjectName).styles.css" />
+    <ItemGroup>
+      <_CopyItems Include="$(PublishDir)wwwroot\_framework\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(_CopyItems)" DestinationFolder="..\..\bin-blazor\_framework" />
+    <Copy SourceFiles="$(PublishDir)wwwroot\$(ProjectName).styles.css" DestinationFolder="..\..\bin-blazor" />
+  </Target>
 
 </Project>
