@@ -18,22 +18,47 @@
         <span class="date-posted">
             @DateTime.Parse(Comment.createdAt).ToString("D")
         </span>
-        <span class="mod-options" hidden="@(!canModify)">
-            <i class="ion-trash-a" @onclick="DeleteClicked"></i>
+        <span class="mod-options" hidden="@(!canModify)" @onclick="DeleteClicked">
+            <i class="ion-trash-a"></i> <span class="mod-options-text">Delete</span>
+        </span>
+        <span class="mod-options" @onclick="PrintClicked">
+            <i class="ion-printer"></i> <span class="mod-options-text">Print to console</span>
         </span>
     </div>
 </div>
 
 @code {
+
     [Parameter]
     public Comment Comment { get; set; } = Comment.Empty();
+
+    /// <summary>
+    /// Event when the "delete" icon was clicked.
+    /// Type "bool" just for compatibility with original Angular component, which also uses bool there.
+    /// </summary>
+    [Parameter]
+    public EventCallback<bool> OnDeleteComment { get; set; } 
+
+    /// <summary>
+    /// Additional event when the "print" icon was clicked.
+    /// Just for testing.
+    /// </summary>
+    [Parameter]
+    public EventCallback<bool> OnPrintComment { get; set; }
+
     private bool canModify = true;
+
 
     protected override void OnParametersSet() {
         canModify = Comment.author.username == "User0";
     }
 
     private void DeleteClicked() {
-        Console.WriteLine("Delete clicked");
+        _ = OnDeleteComment.InvokeAsync(true);
     }
+
+    private void PrintClicked() {
+        _ = OnPrintComment.InvokeAsync(true);
+    }
+
 }

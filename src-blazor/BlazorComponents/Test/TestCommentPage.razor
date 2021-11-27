@@ -3,7 +3,11 @@
 <h2>Test page for the <code>ArticleComment</code> component</h2>
 <div style="width: 50em">
     @foreach (var comment in comments) {
-        <BlazorArticleComment Comment="comment"></BlazorArticleComment>
+        <BlazorArticleComment
+            Comment="comment"
+            OnDeleteComment="@(_ => DeleteComment(comment))"
+            OnPrintComment="@(_ => PrintComment(comment))">
+        </BlazorArticleComment>
     }
 </div>
 
@@ -13,4 +17,13 @@
     private static List<Comment> CreateRandomComments() =>
         Enumerable.Range(0, 5).Select(i => new Comment(i, $"Content of comment {i}",
             DateTime.Now.AddDays(-1 * i).ToString("O"), new Profile($"User{i}", "", "icon-32.png", false))).ToList();
+
+    private void DeleteComment(Comment comment) {
+        Console.WriteLine($"Test: Deleting comment {comment.id}...");
+    }
+
+    private void PrintComment(Comment comment) {
+        Console.WriteLine($"Comment is: {comment}");
+    }
+
 }

@@ -8,3 +8,13 @@
     color: #5c2d91;
     margin-right: 1em;
 }
+
+/* Pointer cursor on clickable icons (missing in Angular app) */
+.mod-options {
+    cursor: pointer;
+}
+
+.mod-options-text {
+    font-size: .8rem !important;
+    margin-right: 1em;
+}

@@ -8,4 +8,6 @@ import { BlazorAdapterComponent } from '../blazor-adapter/blazor-adapter.compone
 
 export class BlazorArticleCommentComponent extends BlazorAdapterComponent {
   @Input() comment: object | null = null;
+  @Output() onDeleteComment: EventEmitter<any> = new EventEmitter();
+  @Output() onPrintComment: EventEmitter<any> = new EventEmitter();
 }

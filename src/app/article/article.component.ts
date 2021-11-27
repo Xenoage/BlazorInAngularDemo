@@ -113,4 +113,8 @@ export class ArticleComponent implements OnInit {
       );
   }
 
+  onPrintComment(comment) {
+    console.log("Comment:", comment);
+  }
+
 }
