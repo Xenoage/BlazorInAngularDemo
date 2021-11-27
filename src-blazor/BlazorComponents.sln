@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorComponents", "BlazorComponents\BlazorComponents.csproj", "{E322F311-B465-4D3A-8B93-B741359C26EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularAdapterBuild", "AngularAdapterBuild\AngularAdapterBuild.csproj", "{18FC82C9-942C-4484-87BE-D7D8593BBB3E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E322F311-B465-4D3A-8B93-B741359C26EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E322F311-B465-4D3A-8B93-B741359C26EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E322F311-B465-4D3A-8B93-B741359C26EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18FC82C9-942C-4484-87BE-D7D8593BBB3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18FC82C9-942C-4484-87BE-D7D8593BBB3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18FC82C9-942C-4484-87BE-D7D8593BBB3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18FC82C9-942C-4484-87BE-D7D8593BBB3E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

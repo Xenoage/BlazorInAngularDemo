@@ -2,3 +2,9 @@
 .card {
     border: 2px dashed #5c2d91;
 }
+
+/* Blazor hint text */
+.blazor-hint {
+    color: #5c2d91;
+    margin-right: 1em;
+}
