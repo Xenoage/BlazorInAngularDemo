@@ -1,0 +1,53 @@
+name: DeployToGitHubPages
+env:
+  PUBLISH_DIR: dist
+
+# Controls when the action will run
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+        include-prerelease: true
+
+    - name: Build C# AngularAdapterBuild
+      working-directory: ./src-blazor/AngularAdapterBuild
+      run: dotnet build
+
+    - name: Build C# BlazorComponents
+      working-directory: ./src-blazor/BlazorComponents
+      run: dotnet publish
+
+    - name: Install Angular packages
+      run: npm install
+
+    - name: Build Angular project
+      run: npm run build
+
+    - name: Rewrite base href
+      uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
+      with:
+        html_path: ${{ env.PUBLISH_DIR }}/index.html
+        base_href: /BlazorInAngularDemo/
+
+    # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
+    - name: Add .nojekyll file
+      run: touch ${{ env.PUBLISH_DIR }}/.nojekyll
+
+    - name: GitHub Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v1.5.1
+      with:
+        target_branch: gh-pages
+        build_dir: ${{ env.PUBLISH_DIR }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

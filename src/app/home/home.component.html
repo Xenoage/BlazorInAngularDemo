@@ -35,6 +35,21 @@
           </ul>
         </div>
 
+        <!-- Welcome message (and Firefox warning) for the BlazorInAngularDemo demo -->
+        <p style="margin-top: 20px"><span style="color:#5c2d91; font-weight: bold;">Welcome to our BlazorInAngularDemo :-)</span>
+          Open one of the following articles to see the comments below rendered both in Blazor and Angular.</p>
+        <style>
+          @-moz-document url-prefix() {
+            .only-firefox {
+              display: block !important;
+              color: red;
+              font-weight: bold;
+            }
+          }
+        </style>
+        <p class="only-firefox" style="display: none;">IMPORTANT! There is an issue with the Firefox browser when deployed this app on github pages,
+          like in this demo. Please open this page in Chrome or Edge browser, otherwise the Blazor components may not be visible.</p>
+
         <app-article-list [limit]="10" [config]="listConfig"></app-article-list>
       </div>
 

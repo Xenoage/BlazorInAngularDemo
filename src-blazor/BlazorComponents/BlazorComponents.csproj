@@ -15,7 +15,7 @@
     <ProjectReference Include="..\AngularAdapterBuild\AngularAdapterBuild.csproj" />
   </ItemGroup>
 
-  <Import Project="..\AngularAdapterBuild\build\net6.0\AngularAdapterBuild.targets" />
+  <Import Project="..\AngularAdapterBuild\Build\net6.0\AngularAdapterBuild.targets" />
 
   <Target Name="CopyBlazorBinariesToAngularProject" AfterTargets="Publish">
     <RemoveDir Directories="..\..\bin-blazor\_framework" />
