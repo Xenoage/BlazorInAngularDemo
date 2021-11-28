@@ -1,7 +1,7 @@
 @using AngularAdapterBuild
+@using BlazorComponents.Services
 @attribute [GenerateAngular]
-
-@inject IJSRuntime JS
+@inject IAppService app
 
 <div class="card">
     <div class="card-block">
@@ -52,15 +52,7 @@
 
 
     protected override async Task OnParametersSetAsync() {
-        if (Settings.isTestEnvironment) {
-            // For testing: Assume we may modify this commend when the username is "User0"
-            canModify = Comment.author.username == "User0";
-        } else {
-            // In production: Compare with logged in user (see blazor-bridge.service.ts in Angular app)
-            var user = await JS.InvokeAsync<User?>("window.BlazorBridge.getCurrentUser");
-            canModify = Comment.author.username == user?.username;
-            Console.WriteLine(user);
-        }
+        canModify = (await app.GetCurrentUser())?.username == Comment.author.username;
     }
 
     private void DeleteClicked() {
