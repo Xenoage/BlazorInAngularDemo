@@ -10,11 +10,11 @@
         </p>
     </div>
     <div class="card-footer">
-        <NavLink class="comment-author" href=@($"profile/{Comment.author.username}")>
+        <NavLink class="comment-author" href=@($"{Settings.linkPrefix}profile/{Comment.author.username}")>
             <img src="@Comment.author.image" class="comment-author-img" />
         </NavLink>
         &nbsp;
-        <NavLink class="comment-author" href=@($"profile/{Comment.author.username}")>
+        <NavLink class="comment-author" href=@($"{Settings.linkPrefix}profile/{Comment.author.username}")>
             @Comment.author.username
         </NavLink>
         <span class="date-posted">
