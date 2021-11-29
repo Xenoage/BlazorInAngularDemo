@@ -1,0 +1,21 @@
+/* /Components/BlazorArticleComment.razor.rz.scp.css */
+/* Draw violet border around component to prove we are using Blazor ;-) */
+.card[b-eqkifq4i23] {
+    border: 2px dashed #5c2d91;
+}
+
+/* Blazor hint text */
+.blazor-hint[b-eqkifq4i23] {
+    color: #5c2d91;
+    margin-right: 1em;
+}
+
+/* Pointer cursor on clickable icons (missing in Angular app) */
+.mod-options[b-eqkifq4i23] {
+    cursor: pointer;
+}
+
+.mod-options-text[b-eqkifq4i23] {
+    font-size: .8rem !important;
+    margin-right: 1em;
+}
