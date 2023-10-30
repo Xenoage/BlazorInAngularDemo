@@ -1,0 +1,7 @@
+﻿div {
+    display: inline-block;
+    border: 2px solid black;
+    background: #eee;
+    padding: 1em;
+    margin: 1em;
+}
