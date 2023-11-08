@@ -1,8 +1,8 @@
-﻿div {
+﻿div.container {
     display: inline-block;
     border: 2px solid #55328c;
     background: #f0eaf7;
-    padding: 1em;
+    padding: 30px;
     margin: 1em;
     background-image: url("assets/blazor-icon.png");
     background-repeat: no-repeat;

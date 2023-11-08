@@ -2,6 +2,20 @@
 
 <h1>Blazor Components Test Project</h1>
 
-<Counter />
-<Counter />
-<Counter />
+<div>
+    <Counter />
+    <Counter />
+    <Counter />
+</div>
+
+<HeroEditor Hero="@testHero" HeroChanged="OnHeroChanged"/>
+
+@code {
+    private Hero testHero = new(5, "Arnold");
+
+    private void OnHeroChanged(Hero hero) {
+        testHero = hero;
+        Console.WriteLine("Hero changed: " + hero);
+    }
+
+}

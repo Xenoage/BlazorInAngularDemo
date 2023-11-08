@@ -1,0 +1,29 @@
+﻿<div class="container">
+    <div><span>id: </span>@Hero.id</div>
+    <div>
+        <label for="hero-name">Hero name: </label>
+        <input id="hero-name" @bind="newName" placeholder="Hero name" @bind:event="oninput" @onkeyup="UpdateHero" />
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public Hero Hero { get; set; } = new(0, "");
+
+    [Parameter]
+    public EventCallback<Hero> HeroChanged { get; set; }
+
+    private string newName = "";
+
+
+    protected override void OnParametersSet() {
+        newName = Hero.name;
+    }
+
+    private async Task UpdateHero() {
+        Hero = Hero with { name = newName };
+        await HeroChanged.InvokeAsync(Hero);
+    }
+
+}
