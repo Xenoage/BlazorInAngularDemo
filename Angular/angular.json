@@ -19,7 +19,13 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "../Blazor/bin/Debug/net7.0/publish/wwwroot",
+                "output": ".",
+                "ignore": ["index.html"]
+              }
             ],
             "styles": [
               "src/styles.css"
