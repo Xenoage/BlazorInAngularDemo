@@ -19,5 +19,6 @@ Here are the basic steps how we implemented the demo based on the original Angul
 * [[Commit]](https://github.com/Xenoage/BlazorInAngularDemo/commit/f51cc799077804b2b9610dce41c770e27b0cff8c) We imported the compiled Blazor web components into the Angular project (see commit diff for all required steps) and replaced the app component by our Blazor counter component for a quick test. `npm start` now successfully serves the Blazor component in an Angular context.
 * [[Commit]](https://github.com/Xenoage/BlazorInAngularDemo/commit/b8b726dacd227f6c5fdb295b2933a93613536038) We integrated the Blazor `HeroEditor` web component into the Angular project. Property binding `[hero]="hero"` is intuitive, but [event binding requires an extra step](https://github.com/Xenoage/BlazorInAngularDemo/blob/b8b726dacd227f6c5fdb295b2933a93613536038/Angular/src/app/hero-detail/hero-detail.component.ts#L29) to get the correct scope in the event handler.
 * ... Work in progress, we will continue with:
+  * Provide a running demo using GitHub Actions and GitHub Pages 
   * Talking to an Angular service from Blazor
   * Trying to debug the Blazor component when running in Angular
