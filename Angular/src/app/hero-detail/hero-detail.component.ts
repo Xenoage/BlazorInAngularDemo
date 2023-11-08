@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -11,7 +11,8 @@ import { HeroService } from '../hero.service';
   styleUrls: [ './hero-detail.component.css' ]
 })
 export class HeroDetailComponent implements OnInit {
-  hero: Hero | undefined;
+  hero: Hero = { id: 0, name: "" };
+  @ViewChild("editor") editor!: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,10 +24,20 @@ export class HeroDetailComponent implements OnInit {
     this.getHero();
   }
 
+  ngAfterViewInit(): void {
+    // Register web component event (we need to bind "this" to the Angular component!)
+    this.editor.nativeElement.heroChanged = this.onHeroChanged.bind(this);
+  }
+
   getHero(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
+  }
+
+  onHeroChanged(hero: Hero) {
+    console.log("Hero changed from Blazor component: " + hero.name);
+    this.hero = hero;
   }
 
   goBack(): void {
